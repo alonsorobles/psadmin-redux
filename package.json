@@ -5,6 +5,7 @@
   "description": "Source code written while following along with Pluralsight's Building Applications with React and Redux in ES6 Course by Cory House.",
   "main": "index.js",
   "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
     "start": "babel-node tools/srcServer.js"
   },
   "repository": {
