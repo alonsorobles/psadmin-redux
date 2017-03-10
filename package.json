@@ -5,7 +5,7 @@
   "description": "Source code written while following along with Pluralsight's Building Applications with React and Redux in ES6 Course by Cory House.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node tools/srcServer.js"
   },
   "repository": {
     "type": "git",
