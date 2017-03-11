@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <div className="jumbotron">
       <h1>Pluralsight Administration</h1>
@@ -9,6 +9,6 @@ function HomePage() {
       <Link to="about" className="btn btn-primary btn-lg">Learn more</Link>
     </div>
   );
-}
+};
 
 export default HomePage;
