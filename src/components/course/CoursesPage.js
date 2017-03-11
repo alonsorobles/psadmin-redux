@@ -2,24 +2,21 @@ import React, {PropTypes} from "react";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
+import CourseList from './CourseList';
 
 class CoursesPage extends React.Component {
-  static courseRow(course, index) {
-    return (
-      <div key={index}>{course.title}</div>
-    );
-  }
-
   constructor(props, context) {
     super(props, context);
   }
 
 
   render() {
+    const {courses} = this.props;
+
     return (
       <div>
         <h1>Courses</h1>
-        {this.props.courses.map(CoursesPage.courseRow)}
+        <CourseList courses={courses}/>
       </div>
     );
   }
