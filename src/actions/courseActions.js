@@ -11,7 +11,7 @@ export function loadCourses() {
     return CourseApi.getAllCourses().then(courses => {
       dispatch(loadCoursesSuccess(courses));
     }).catch(error => {
-      throw(error);
+      throw(error); // probably want to create a loadCoursesFailure action to handle error.
     });
   };
 }
