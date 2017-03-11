@@ -7,6 +7,9 @@ class CoursesPage extends React.Component {
     this.state = {
       course: {title: ''}
     };
+
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleClickSave = this.handleClickSave.bind(this);
   }
 
   handleTitleChange(event) {
@@ -16,7 +19,7 @@ class CoursesPage extends React.Component {
   }
 
   handleClickSave() {
-
+    alert(`Saving ${this.state.course.title}`);
   }
 
   render() {
@@ -24,8 +27,8 @@ class CoursesPage extends React.Component {
       <div>
         <h1>Courses</h1>
         <h2>Add Course</h2>
-        <input type="text" onChange={this.handleTitleChange} value={this.state.course.title} />
-        <input type="submit" value="Save" onClick={this.handleClickSave} />
+        <input type="text" onChange={this.handleTitleChange} value={this.state.course.title}/>
+        <input type="submit" value="Save" onClick={this.handleClickSave}/>
       </div>
     );
   }
