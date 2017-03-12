@@ -1,8 +1,9 @@
-/* eslist-disable no-console */
 import webpack from "webpack";
 import webpackConfig from "../webpack.config.prod";
 //noinspection ES6UnusedImports
 import colors from "colors";
+
+/* eslint-disable no-console */
 
 process.env.NODE_ENV = 'production';
 

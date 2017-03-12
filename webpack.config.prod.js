@@ -19,7 +19,7 @@ export default {
     contentBase: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new webpack.optimize.OccuranceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),
