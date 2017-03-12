@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as authorActions from "../../actions/authorActions";
 import AuthorList from "./AuthorList";
+import {Link} from "react-router";
 
 class AuthorsPage extends React.Component {
   constructor(props, context) {
@@ -14,6 +15,7 @@ class AuthorsPage extends React.Component {
     return (
       <div>
         <h1>Authors</h1>
+        <Link to="author" className="btn btn-primary">Add Author</Link>
         <AuthorList authors={authors}/>
       </div>
     );
