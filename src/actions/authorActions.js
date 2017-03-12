@@ -8,7 +8,7 @@ export function loadAuthorsSuccess(authors) {
 
 export function loadAuthors() {
   return function (dispatch) {
-    return AuthorApi.getAllCourses().then(authors => {
+    return AuthorApi.getAllAuthors().then(authors => {
       dispatch(loadAuthorsSuccess(authors));
     }).catch(error => {
       throw(error); // probably want to create a loadCoursesFailure action to handle error.
