@@ -9,13 +9,19 @@ class ManageAuthorPage extends React.Component {
     super(props, context);
 
     this.state = {
-      author: Object.assign({}, props.author),
+      author: Object.assign({}, this.props.author),
       errors: {},
       saving: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.author.id != nextProps.author.id) {
+      this.setState({author: Object.assign({}, nextProps.author)});
+    }
   }
 
   handleChange(event) {
@@ -44,8 +50,20 @@ ManageAuthorPage.propTypes = {
   author: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProprs) {
+function getAuthorById(authors, id) {
+  const author = authors.filter(author => author.id == id);
+  return author.length ? author[0] : null;
+}
+
+function mapStateToProps(state, ownProps) {
+  const authorId = ownProps.params.id; // from the path /author/:id
+
   let author = {id: '', firstName: '', lastName: ''};
+
+  if (authorId && state.authors.length > 0) {
+    author = getAuthorById(state.authors, authorId);
+  }
+
   return {
     author: author
   };
