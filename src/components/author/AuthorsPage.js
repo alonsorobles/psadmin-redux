@@ -2,6 +2,7 @@ import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../../actions/authorActions";
+import AuthorList from "./AuthorList";
 
 class AuthorsPage extends React.Component {
     constructor(props, context) {
@@ -10,7 +11,10 @@ class AuthorsPage extends React.Component {
 
     render() {
         return (
-            <div>AuthorsPage</div>
+            <div>
+              <h1>Authors</h1>
+              <AuthorList />
+            </div>
         );
     }
 }
