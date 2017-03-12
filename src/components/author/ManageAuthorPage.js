@@ -2,6 +2,7 @@ import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as authorActions from "../../actions/authorActions";
+import AuthorForm from "./AuthorForm";
 
 class ManageAuthorPage extends React.Component {
     constructor(props, context) {
@@ -10,7 +11,7 @@ class ManageAuthorPage extends React.Component {
 
     render() {
         return (
-            <div>ManageAuthorPage</div>
+            <AuthorForm />
         );
     }
 }
