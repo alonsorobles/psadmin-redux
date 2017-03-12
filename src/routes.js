@@ -15,6 +15,8 @@ export default (
     <Route path="course" component={ManageCoursePage}/>
     <Route path="course/:id" component={ManageCoursePage}/>
     <Route path="authors" component={AuthorsPage}/>
+    <Route path="author" component={AuthorsPage} />
+    <Route path="author/:id" component={AuthorsPage} />
     <Route path="about" component={AboutPage}/>
   </Route>
 );
