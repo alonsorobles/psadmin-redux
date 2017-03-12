@@ -1,11 +1,25 @@
 import React, {PropTypes} from "react";
+import AuthorListRow from "./AuthorListRow";
 
-const AuthorList = (props) => {
+const AuthorList = ({authors}) => {
     return (
-        <div>AuthorList</div>
+      <table className="table">
+        <thead>
+        <tr>
+          <th>Author</th>
+        </tr>
+        </thead>
+        <tbody>
+        {authors.map(author =>
+          <AuthorListRow key={author.id} author={author}/>
+        )}
+        </tbody>
+      </table>
     );
 };
 
-AuthorList.propTypes = {};
+AuthorList.propTypes = {
+  authors: PropTypes.array.isRequired
+};
 
 export default AuthorList;
