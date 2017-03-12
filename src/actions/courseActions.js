@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import CourseApi from "../api/mockCourseApi";
+import {beginAjaxCall} from "./ajaxStatusActions";
 
 //noinspection JSUnusedGlobalSymbols
 export function loadCoursesSuccess(courses) {
@@ -8,6 +9,7 @@ export function loadCoursesSuccess(courses) {
 
 export function loadCourses() {
   return function (dispatch) {
+    dispatch(beginAjaxCall());
     return CourseApi.getAllCourses().then(courses => {
       dispatch(loadCoursesSuccess(courses));
     }).catch(error => {
@@ -26,6 +28,7 @@ export function updateCourseSuccess(course) {
 
 export function saveCourse(course) {
   return function (dispatch) { // can use a second optional parameter "getState" to access store state if needed here
+    dispatch(beginAjaxCall());
     return CourseApi.saveCourse(course).then(savedCourse => {
       course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
