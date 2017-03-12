@@ -14,6 +14,7 @@ class ManageCoursePage extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   handleChange(event) {
@@ -23,12 +24,17 @@ class ManageCoursePage extends React.Component {
     return this.setState({course: course});
   }
 
+  handleSave(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
       <CourseForm course={this.state.course}
                   errors={this.state.errors}
                   allAuthors={this.props.authors}
                   onChange={this.handleChange}
+                  onSave={this.handleSave}
                   />
     );
   }
