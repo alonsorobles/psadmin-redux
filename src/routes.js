@@ -7,6 +7,7 @@ import CoursesPage from "./components/course/CoursesPage";
 // eslint-disable-next-line import/no-named-as-default
 import ManageCoursePage from "./components/course/ManageCoursePage";
 import AuthorsPage from "./components/author/AuthorsPage";
+import ManageAuthorPage from "./components/author/ManageAuthorPage"
 
 export default (
   <Route path="/" component={App}>
@@ -15,8 +16,8 @@ export default (
     <Route path="course" component={ManageCoursePage}/>
     <Route path="course/:id" component={ManageCoursePage}/>
     <Route path="authors" component={AuthorsPage}/>
-    <Route path="author" component={AuthorsPage} />
-    <Route path="author/:id" component={AuthorsPage} />
+    <Route path="author" component={ManageAuthorPage} />
+    <Route path="author/:id" component={ManageAuthorPage} />
     <Route path="about" component={AboutPage}/>
   </Route>
 );
