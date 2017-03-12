@@ -5,8 +5,7 @@ import TestUtils from "react-addons-test-utils";
 import CourseForm from "./CourseForm";
 
 function setup(saving) {
-  //noinspection JSUnusedGlobalSymbols
-  let props = {
+  const props = {
     course: {},
     saving: saving,
     errors: {},
