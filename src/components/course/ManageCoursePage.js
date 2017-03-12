@@ -56,11 +56,11 @@ export class ManageCoursePage extends React.Component {
     this.setState({saving: true});
     this.props.actions.saveCourse(this.state.course).then(() => {
       toastr.success('Course saved!');
+      this.setState({saving: false});
       this.redirect();
     }).catch(error => {
-      toastr.error(error);
-    }).then(() => {
       this.setState({saving: false});
+      toastr.error(error);
     });
   }
 
@@ -108,7 +108,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     course: course,
-    authors: authorsFormattedForDropDown(this.state.authors)
+    authors: authorsFormattedForDropDown(state.authors)
   };
 }
 
