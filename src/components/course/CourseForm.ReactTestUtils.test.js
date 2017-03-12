@@ -1,5 +1,4 @@
 import expect from "expect";
-import {describe, it} from "mocha";
 import React from "react";
 import TestUtils from "react-addons-test-utils";
 import CourseForm from "./CourseForm";

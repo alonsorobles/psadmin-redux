@@ -1,5 +1,4 @@
 import expect from "expect";
-import {describe, it} from "mocha";
 import courseReducer from "./courseReducer";
 import * as actions from "../actions/courseActions";
 import * as types from "../actions/actionTypes";

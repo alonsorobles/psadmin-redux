@@ -1,5 +1,4 @@
 import expect from "expect";
-import {describe, it} from "mocha";
 
 import {authorsFormattedForDropDown} from "./selectors";
 

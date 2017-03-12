@@ -1,7 +1,6 @@
 // Testing actions may not be worth while since logic is very simple yielding low value tests.
 // Although testing thunks provide more value since mocked API behavior maybe tested.
 import expect from "expect";
-import {describe, it, afterEach} from "mocha";
 import * as courseActions from "./courseActions";
 import * as types from "./actionTypes";
 import thunk from "redux-thunk";

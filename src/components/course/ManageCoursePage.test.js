@@ -1,5 +1,4 @@
 import expect from "expect";
-import {describe, it} from "mocha";
 import React from "react";
 import {mount} from "enzyme";
 import {ManageCoursePage} from "./ManageCoursePage";

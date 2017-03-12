@@ -4,4 +4,4 @@
 * Look into redux-promise when it becomes more stable and look at redux-saga as well as an alternative to redux-thunk
 * Testing actions may not be worth while since logic is very simple yielding low value tests.
 * Consider looking into "Redux Test Recorder" to automate testing redux reducers
-
+* Redux store tests are integration tests that test actions, selectors, and reducers 
