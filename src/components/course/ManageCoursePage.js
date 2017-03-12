@@ -17,6 +17,12 @@ class ManageCoursePage extends React.Component {
     this.handleSave = this.handleSave.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.course.id != nextProps.course.id) {
+      this.setState({course: Object.assign({}, nextProps.course)});
+    }
+  }
+
   handleChange(event) {
     const field = event.target.name;
     let course = this.state.course;
