@@ -6,11 +6,13 @@ import {Provider} from "react-redux";
 import {Router, browserHistory} from "react-router";
 import routes from "./routes";
 import {loadCourses} from './actions/courseActions';
+import {loadAuthors} from './actions/authorActions';
 import "./styles/style.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore(); //can pass initial state from local storage or server here
 store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 render(
   <Provider store={store}>
