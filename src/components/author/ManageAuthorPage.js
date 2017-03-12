@@ -9,13 +9,22 @@ class ManageAuthorPage extends React.Component {
     super(props, context);
 
     this.state = {
-      author: Object.assign({}, props.author)
+      author: Object.assign({}, props.author),
+      errors: {}
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const author = this.state.author;
+    author[event.target.name] = event.target.value;
+    this.setState({author: author});
   }
 
   render() {
     return (
-      <AuthorForm author={this.state.author}/>
+      <AuthorForm author={this.state.author} onChange={this.handleChange} errors={this.state.errors}/>
     );
   }
 }

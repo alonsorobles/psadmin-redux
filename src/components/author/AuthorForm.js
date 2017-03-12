@@ -1,13 +1,18 @@
 import React, {PropTypes} from "react";
+import TextInput from "../common/TextInput";
 
-const AuthorForm = ({author}) => {
+const AuthorForm = ({author, onChange, errors}) => {
     return (
-        <div>AuthorForm</div>
+        <form>
+          <TextInput name="firstName" label="First Name" onChange={onChange} value={author.firstName} error={errors.firstName}/>
+        </form>
     );
 };
 
 AuthorForm.propTypes = {
-  author: PropTypes.object.isRequired
+  author: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object
 };
 
 export default AuthorForm;
