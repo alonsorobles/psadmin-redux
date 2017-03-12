@@ -1,7 +1,8 @@
 import React, {PropTypes} from "react";
 import TextInput from "../common/TextInput";
+import SaveButton from "../common/SaveButton";
 
-const AuthorForm = ({author, onChange, errors}) => {
+const AuthorForm = ({author, onChange, onSave, saving, errors}) => {
   return (
     <form>
       <TextInput name="firstName"
@@ -14,6 +15,7 @@ const AuthorForm = ({author, onChange, errors}) => {
                  onChange={onChange}
                  value={author.lastName}
                  error={errors.lastName}/>
+      <SaveButton saving={saving} onSave={onSave}/>
     </form>
   );
 };
@@ -21,6 +23,8 @@ const AuthorForm = ({author, onChange, errors}) => {
 AuthorForm.propTypes = {
   author: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  saving: PropTypes.bool.isRequired,
   errors: PropTypes.object
 };
 

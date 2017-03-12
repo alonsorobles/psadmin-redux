@@ -10,10 +10,12 @@ class ManageAuthorPage extends React.Component {
 
     this.state = {
       author: Object.assign({}, props.author),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   handleChange(event) {
@@ -22,9 +24,17 @@ class ManageAuthorPage extends React.Component {
     this.setState({author: author});
   }
 
+  handleSave(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <AuthorForm author={this.state.author} onChange={this.handleChange} errors={this.state.errors}/>
+      <AuthorForm author={this.state.author}
+                  onChange={this.handleChange}
+                  onSave={this.handleSave}
+                  saving={this.state.saving}
+                  errors={this.state.errors}/>
     );
   }
 }
