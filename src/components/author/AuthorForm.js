@@ -1,11 +1,13 @@
 import React, {PropTypes} from "react";
 
-const AuthorForm = (props) => {
+const AuthorForm = ({author}) => {
     return (
         <div>AuthorForm</div>
     );
 };
 
-AuthorForm.propTypes = {};
+AuthorForm.propTypes = {
+  author: PropTypes.object.isRequired
+};
 
 export default AuthorForm;

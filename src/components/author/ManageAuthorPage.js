@@ -5,31 +5,37 @@ import * as authorActions from "../../actions/authorActions";
 import AuthorForm from "./AuthorForm";
 
 class ManageAuthorPage extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-    }
+  constructor(props, context) {
+    super(props, context);
 
-    render() {
-        return (
-            <AuthorForm />
-        );
-    }
+    this.state = {
+      author: Object.assign({}, props.author)
+    };
+  }
+
+  render() {
+    return (
+      <AuthorForm author={this.state.author}/>
+    );
+  }
 }
 
 ManageAuthorPage.propTypes = {
-    actions: PropTypes.objectOf(PropTypes.func).isRequired
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
+  author: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProprs) {
-    return {
-        state: state
-    };
+  let author = {id: '', firstName: '', lastName: ''};
+  return {
+    author: author
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(authorActions, dispatch)
-    };
+  return {
+    actions: bindActionCreators(authorActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManageAuthorPage);
