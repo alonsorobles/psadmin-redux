@@ -22,7 +22,7 @@ describe('Course Actions', () => {
 
       // assert
       expect(action).toEqual(expectedAction);
-    })
+    });
   });
 });
 
