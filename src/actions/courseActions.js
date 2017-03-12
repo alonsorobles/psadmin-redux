@@ -26,6 +26,7 @@ export function updateCourseSuccess(course) {
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
+//noinspection JSUnusedGlobalSymbols
 export function saveCourse(course) {
   return function (dispatch) { // can use a second optional parameter "getState" to access store state if needed here
     dispatch(beginAjaxCall());
