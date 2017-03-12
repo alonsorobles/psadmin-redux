@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import TextInput from "../common/TextInput";
 import SelectInput from "../common/SelectInput";
+import SaveButton from "../common/SaveButton";
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
   return (
@@ -28,11 +29,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                  value={course.length}
                  onChange={onChange}
                  error={errors.length}/>
-      <input type="submit"
-             disabled={saving}
-             value={saving ? 'Saving...' : 'Save'}
-             className="btn btn-primary"
-             onClick={onSave}/>
+      <SaveButton saving={saving} onSave={onSave}/>
     </form>
   );
 };

@@ -5,6 +5,7 @@ const SaveButton = ({saving, onSave}) => {
     <input type="submit"
            disabled={saving}
            className="btn btn-primary"
+           value={saving ? 'Saving...' : 'Save'}
            onClick={onSave}/>
   );
 };
