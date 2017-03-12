@@ -26,6 +26,7 @@ class ManageCoursePage extends React.Component {
 
   handleSave(event) {
     event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
   }
 
   render() {

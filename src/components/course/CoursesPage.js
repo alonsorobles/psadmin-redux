@@ -1,14 +1,14 @@
 import React, {PropTypes} from "react";
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as courseActions from '../../actions/courseActions';
-import CourseList from './CourseList';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as courseActions from "../../actions/courseActions";
+import CourseList from "./CourseList";
+import {Link} from "react-router";
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
-
 
   render() {
     const {courses} = this.props;
@@ -16,6 +16,7 @@ class CoursesPage extends React.Component {
     return (
       <div>
         <h1>Courses</h1>
+        <Link to="course" className="btn btn-primary">Add Course</Link>
         <CourseList courses={courses}/>
       </div>
     );
