@@ -31,5 +31,5 @@ export function saveCourse(course) {
     }).catch(error => {
       throw(error);
     });
-  }
+  };
 }
