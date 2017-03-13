@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import {Link} from 'react-router';
+import {Link} from "react-router";
 
 const CourseListRow = ({course, onDelete}) => {
   const callDelete = () => {
@@ -16,7 +16,11 @@ const CourseListRow = ({course, onDelete}) => {
       <td>{course.authorId}</td>
       <td>{course.category}</td>
       <td>{course.length}</td>
-      <td><a href="#" onClick={callDelete}><i className="fa fa-trash-o" aria-hidden="true"/></a></td>
+      <td>
+        <a onClick={callDelete}>
+          <i className="fa fa-trash-o" aria-hidden="true"/>
+        </a>
+      </td>
     </tr>
   );
 };

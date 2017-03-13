@@ -3,7 +3,7 @@ import CourseListRow from './CourseListRow';
 
 const CourseList = ({courses, onDelete}) => {
   return (
-    <table className="table">
+    <table className="table table-striped table-hover">
       <thead>
       <tr>
         <th>&nbsp;</th>
