@@ -44,4 +44,23 @@ describe('Author Reducer', () => {
     expect(updatedAuthor.name).toEqual(newName);
     expect(untouchedAuthor.name).toEqual('A');
   });
+
+  it('should delete author when passed ' + types.DELETE_AUTHOR_SUCCESS, () => {
+    // arrange
+    const initialState = [
+      {id: 'A'},
+      {id: 'B'},
+      {id: 'C'}
+    ];
+    const author = {id: 'B'};
+    const action = actions.deleteAuthorSuccess(author);
+
+    // act
+    const newState = authorReducer(initialState, action);
+
+    // assert
+    expect(newState.length).toEqual(2);
+    expect(newState[0].title).toNotEqual('B');
+    expect(newState[1].title).toNotEqual('B');
+  });
 });

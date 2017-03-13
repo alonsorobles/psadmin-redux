@@ -37,3 +37,19 @@ export function saveAuthor(author) {
     });
   };
 }
+
+export function deleteAuthorSuccess(author) {
+  return {type: types.DELETE_AUTHOR_SUCCESS, author};
+}
+
+export function deleteAuthor(author) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    return AuthorApi.deleteAuthor(author.id).then(() => {
+      dispatch(deleteAuthorSuccess(author));
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
+}
