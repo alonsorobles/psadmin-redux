@@ -4,15 +4,21 @@ import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courseActions";
 import CourseList from "./CourseList";
 import {Link} from "react-router";
+import toastr from "toastr";
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDelete(course) {
-    // eslint-disable-next-line no-console
-    console.log(course);
+    this.props.actions.deleteCourse(course).then(() => {
+      toastr.success('The "' + course.title + '" has been deleted.');
+    }).catch(error => {
+      toastr.error(error);
+    });
   }
 
   render() {
