@@ -19,6 +19,7 @@ class ManageAuthorPage extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.routerWillLeave = this.routerWillLeave.bind(this);
+    this.authorFormIsValid = this.authorFormIsValid.bind(this);
   }
 
   componentWillMount() {
@@ -42,12 +43,42 @@ class ManageAuthorPage extends React.Component {
 
   handleChange(event) {
     const author = this.state.author;
-    author[event.target.name] = event.target.value;
-    this.setState({author: author, isDirty: true});
+    const field = event.target.name;
+    author[field] = event.target.value;
+    const errors =  Object.keys(this.state.errors)
+      .filter(key => key !== field)
+      .reduce((obj, key) => {
+        obj[key] = this.state.errors[key];
+        return obj;
+      }, {});
+    this.setState({author: author, isDirty: true, errors: errors});
+  }
+
+  authorFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if (this.state.author.firstName.length < 3) {
+      errors.firstName = 'First name must be at least 3 characters.';
+      formIsValid = false;
+    }
+
+    if (this.state.author.lastName.length < 3) {
+      errors.lastName = 'Last name must be at least 3 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
   }
 
   handleSave(event) {
     event.preventDefault();
+
+    if (!this.authorFormIsValid()) {
+      return;
+    }
+
     this.setState({saving: true});
     this.props.actions.saveAuthor(this.state.author).then(() => {
       toastr.success('Author saved!');
