@@ -35,7 +35,7 @@ class AuthorsPage extends React.Component {
       <div>
         <h1>Authors</h1>
         <Link to="/author" className="btn btn-primary">Add Author</Link>
-        <AuthorList authors={authors} onDelete={this.handleDelete}/>
+        {authors.length > 0 && <AuthorList authors={authors} onDelete={this.handleDelete}/>}
       </div>
     );
   }

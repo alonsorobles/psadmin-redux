@@ -28,7 +28,7 @@ class CoursesPage extends React.Component {
       <div>
         <h1>Courses</h1>
         <Link to="course" className="btn btn-primary">Add Course</Link>
-        <CourseList courses={courses} onDelete={this.handleDelete}/>
+        {courses.length > 0 && <CourseList courses={courses} onDelete={this.handleDelete}/>}
       </div>
     );
   }

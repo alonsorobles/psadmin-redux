@@ -10,9 +10,9 @@
   * Dropping toastr, jQuery, and bootstrap and pulling them in from a CDN instead
 
 ## Challenge
-1. Author administration (hint: don't delete author who currently has a course)
-2. Delete course
-3. Hide empty course list
+1. ~~Author administration (hint: don't delete author who currently has a course)~~
+2. ~~Delete course~~
+3. ~~Hide empty course list~~
 4. Unsaved changes message (prevent navigation away from unsaved form)
 5. Client side validation (category and length data)
 6. Handle 404's (hint: try adding logic to mapStateToProps)
