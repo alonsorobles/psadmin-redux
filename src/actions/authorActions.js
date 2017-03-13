@@ -17,3 +17,22 @@ export function loadAuthors() {
     });
   };
 }
+
+export function createAuthorSuccess(author) {
+  return {type: types.CREATE_AUTHOR_SUCCESS, author};
+}
+
+export function updateAuthorSuccess(author) {
+  return {type: types.UPDATE_AUTHOR_SUCCESS, author};
+}
+
+export function saveAuthor(author) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    return AuthorApi.saveAuthor(author).then(savedAuthor => {
+      author.id ? dispatch(updateAuthorSuccess(savedAuthor)) : dispatch(createAuthorSuccess(savedAuthor));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
