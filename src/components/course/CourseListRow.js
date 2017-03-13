@@ -3,11 +3,9 @@ import {Link} from "react-router";
 
 const CourseListRow = ({course, onDelete}) => {
   const callDelete = () => {
-    // Consider using a BootStrap modal here instead of a confirm
+    // Consider using a BootStrap modal to confirm the deletion
     // http://getbootstrap.com/javascript/#modals
-    if (confirm('Are you sure you want to delete the "' + course.title + '" course?')) {
-      onDelete(course);
-    }
+    onDelete(course);
   };
   return (
     <tr>
