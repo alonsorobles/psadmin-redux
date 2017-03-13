@@ -12,11 +12,20 @@ class ManageAuthorPage extends React.Component {
     this.state = {
       author: Object.assign({}, this.props.author),
       errors: {},
-      saving: false
+      saving: false,
+      isDirty: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.routerWillLeave = this.routerWillLeave.bind(this);
+  }
+
+  componentWillMount() {
+    this.context.router.setRouteLeaveHook(
+      this.props.route,
+      this.routerWillLeave
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,10 +34,16 @@ class ManageAuthorPage extends React.Component {
     }
   }
 
+  routerWillLeave() {
+    if (this.state.isDirty) {
+      return 'Are you sure you want to leave a page? You will lose your changes.';
+    }
+  }
+
   handleChange(event) {
     const author = this.state.author;
     author[event.target.name] = event.target.value;
-    this.setState({author: author});
+    this.setState({author: author, isDirty: true});
   }
 
   handleSave(event) {
@@ -36,7 +51,7 @@ class ManageAuthorPage extends React.Component {
     this.setState({saving: true});
     this.props.actions.saveAuthor(this.state.author).then(() => {
       toastr.success('Author saved!');
-      this.setState({saving: false});
+      this.setState({saving: false, isDirty: false});
       this.redirect();
     }).catch(error => {
       this.setState({saving: false});
@@ -61,7 +76,8 @@ class ManageAuthorPage extends React.Component {
 
 ManageAuthorPage.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
-  author: PropTypes.object.isRequired
+  author: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired
 };
 
 ManageAuthorPage.contextTypes = {

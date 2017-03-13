@@ -13,11 +13,20 @@ export class ManageCoursePage extends React.Component {
     this.state = {
       course: Object.assign({}, this.props.course),
       errors: {},
-      saving: false
+      saving: false,
+      isDirty: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.routerWillLeave = this.routerWillLeave.bind(this);
+  }
+
+  componentWillMount() {
+    this.context.router.setRouteLeaveHook(
+      this.props.route,
+      this.routerWillLeave
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,11 +35,17 @@ export class ManageCoursePage extends React.Component {
     }
   }
 
+  routerWillLeave() {
+    if (this.state.isDirty) {
+      return 'Are you sure you want to leave a page? You will lose your changes.';
+    }
+  }
+
   handleChange(event) {
     const field = event.target.name;
     let course = this.state.course;
     course[field] = event.target.value;
-    return this.setState({course: course});
+    return this.setState({course: course, isDirty: true});
   }
 
   courseFormIsValid() {
@@ -56,7 +71,7 @@ export class ManageCoursePage extends React.Component {
     this.setState({saving: true});
     this.props.actions.saveCourse(this.state.course).then(() => {
       toastr.success('Course saved!');
-      this.setState({saving: false});
+      this.setState({saving: false, isDirty: false});
       this.redirect();
     }).catch(error => {
       this.setState({saving: false});
@@ -84,11 +99,12 @@ export class ManageCoursePage extends React.Component {
 ManageCoursePage.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
   course: PropTypes.object.isRequired,
-  authors: PropTypes.array.isRequired
+  authors: PropTypes.array.isRequired,
+  route: PropTypes.object.isRequired
 };
 
 ManageCoursePage.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object.isRequired
 };
 
 function getCourseById(courses, id) {

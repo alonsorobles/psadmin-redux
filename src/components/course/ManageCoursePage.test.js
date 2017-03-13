@@ -12,12 +12,17 @@ function setup() {
       saveCourse: () => {
         return Promise.resolve();
       }
-    }
+    },
+    route: {}
+  };
+
+  const context = {
+    router: {setRouteLeaveHook: ()=>{}}
   };
 
   // Approach for testing redux connected code like mapStateToProps or mapDispatchToProps
   // return mount(<Provider store={store}><ManageCoursePage/></Provider>);
-  return mount(<ManageCoursePage {...props}/>);
+  return mount(<ManageCoursePage {...props}/>, {context});
 }
 
 describe('Manage Course Page', () => {

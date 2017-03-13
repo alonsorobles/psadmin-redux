@@ -2,9 +2,10 @@ import React, {PropTypes} from "react";
 import {Link} from "react-router";
 
 const CourseListRow = ({course, onDelete}) => {
-  const callDelete = () => {
+  const callDelete = (event) => {
     // Consider using a BootStrap modal to confirm the deletion
     // http://getbootstrap.com/javascript/#modals
+    event.preventDefault();
     onDelete(course);
   };
   return (
@@ -15,7 +16,7 @@ const CourseListRow = ({course, onDelete}) => {
       <td>{course.category}</td>
       <td>{course.length}</td>
       <td>
-        <a onClick={callDelete}>
+        <a href="#delete" onClick={callDelete}>
           <i className="fa fa-trash-o" aria-hidden="true"/>
         </a>
       </td>

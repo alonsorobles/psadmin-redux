@@ -13,7 +13,7 @@
 1. ~~Author administration (hint: don't delete author who currently has a course)~~
 2. ~~Delete course~~
 3. ~~Hide empty course list~~
-4. Unsaved changes message (prevent navigation away from unsaved form)
+4. ~~Unsaved changes message (prevent navigation away from unsaved form)~~
 5. Client side validation (category and length data)
 6. Handle 404's (hint: try adding logic to mapStateToProps)
 7. Show # of courses in the header
