@@ -16,7 +16,7 @@
 4. ~~Unsaved changes message (prevent navigation away from unsaved form)~~
 5. ~~Client side validation (category and length data)~~
 6. ~~Handle 404's (hint: try adding logic to mapStateToProps)~~
-7. Show # of courses in the header
+7. ~~Show # of courses in the header~~
 8. Pagination
 9. Sort Course table by title by default (Hint: mapStateToProps again)
 10. Revert abandoned changes (when user navigates away from form with out saving)
