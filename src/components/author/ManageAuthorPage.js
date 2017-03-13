@@ -126,7 +126,12 @@ function mapStateToProps(state, ownProps) {
   let author = {id: '', firstName: '', lastName: ''};
 
   if (authorId && state.authors.length > 0) {
-    author = getAuthorById(state.authors, authorId);
+    const loadedAuthor = getAuthorById(state.authors, authorId);
+    if (loadedAuthor !== null) {
+      author = loadedAuthor;
+    } else {
+      ownProps.router.replace("/404");
+    }
   }
 
   return {

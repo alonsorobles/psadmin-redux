@@ -140,7 +140,12 @@ function mapStateToProps(state, ownProps) {
   let course = {id: '', watchRef: '', title: '', authorId: '', length: '', category: ''};
 
   if (courseId && state.courses.length > 0) {
-    course = getCourseById(state.courses, courseId);
+    const loadedCourse = getCourseById(state.courses, courseId);
+    if (loadedCourse !== null) {
+      course = loadedCourse;
+    } else {
+      ownProps.router.replace("/404");
+    }
   }
 
   return {
