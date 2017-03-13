@@ -10,6 +10,11 @@ class CoursesPage extends React.Component {
     super(props, context);
   }
 
+  handleDelete(course) {
+    // eslint-disable-next-line no-console
+    console.log(course);
+  }
+
   render() {
     const {courses} = this.props;
 
@@ -17,7 +22,7 @@ class CoursesPage extends React.Component {
       <div>
         <h1>Courses</h1>
         <Link to="course" className="btn btn-primary">Add Course</Link>
-        <CourseList courses={courses}/>
+        <CourseList courses={courses} onDelete={this.handleDelete}/>
       </div>
     );
   }
