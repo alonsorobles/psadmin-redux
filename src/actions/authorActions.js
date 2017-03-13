@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import AuthorApi from "../api/mockAuthorApi";
-import {beginAjaxCall} from "./ajaxStatusActions";
+import {beginAjaxCall, ajaxCallError} from "./ajaxStatusActions";
 
 //noinspection JSUnusedGlobalSymbols
 export function loadAuthorsSuccess(authors) {
@@ -32,6 +32,7 @@ export function saveAuthor(author) {
     return AuthorApi.saveAuthor(author).then(savedAuthor => {
       author.id ? dispatch(updateAuthorSuccess(savedAuthor)) : dispatch(createAuthorSuccess(savedAuthor));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };
