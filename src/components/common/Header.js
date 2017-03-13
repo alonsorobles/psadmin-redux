@@ -15,7 +15,12 @@ const Header = ({loading, courseCount, authorCount}) => {
           </Link></li>
           <li><Link to="/about" activeClassName="active">About</Link></li>
           {loading &&
-          <li><p className="navbar-text"><i className="fa fa-refresh fa-spin fa-fw" aria-hidden="true"/> Loading</p>
+          <li>
+            <p className="navbar-text">
+              <strong className="text-danger">
+                <i className="fa fa-refresh fa-spin fa-fw" aria-hidden="true"/> Loading
+              </strong>
+            </p>
           </li>}
         </ul>
       </div>
