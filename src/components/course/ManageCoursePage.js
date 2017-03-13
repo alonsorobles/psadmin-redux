@@ -45,7 +45,13 @@ export class ManageCoursePage extends React.Component {
     const field = event.target.name;
     let course = this.state.course;
     course[field] = event.target.value;
-    return this.setState({course: course, isDirty: true});
+    const errors =  Object.keys(this.state.errors)
+      .filter(key => key !== field)
+      .reduce((obj, key) => {
+      obj[key] = this.state.errors[key];
+      return obj;
+    }, {});
+    return this.setState({course: course, isDirty: true, errors: errors});
   }
 
   courseFormIsValid() {
@@ -54,6 +60,21 @@ export class ManageCoursePage extends React.Component {
 
     if (this.state.course.title.length < 5) {
       errors.title = 'Title must be at least 5 characters.';
+      formIsValid = false;
+    }
+
+    if (this.state.course.authorId === '') {
+      errors.authorId = 'An author must be selected.';
+      formIsValid = false;
+    }
+
+    if (this.state.course.category.length < 1) {
+      errors.category = 'A category must be specified.';
+      formIsValid = false;
+    }
+
+    if (/^\d+:[0-5]\d$/.test(this.state.course.length) === false) {
+      errors.length = 'Length must be specified as Hours:Minutes. For example: "1:58" specifies 1 hour and 58 minutes.';
       formIsValid = false;
     }
 
